@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => :destroy
 
+
   def index 
     @title = "All users" 
     @users = User.paginate(:page => params[:page])
@@ -35,14 +36,14 @@ class UsersController < ApplicationController
     @title = "Edit user"
   end
 
-  def update 
-    if @user.update_attributes(params[:user]) 
-      flash[:success] = "Profile updated." 
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Profile updated."
       redirect_to @user
     else
-      @title = "Edit user" 
+      @title = "Edit user"
       render 'edit'
-    end 
+    end
   end
 
   def destroy
